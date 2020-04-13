@@ -83,13 +83,15 @@ home_page = "domain_transfer"
 
 doc_events = {
     "Leave Application": {
-        "before_submit": "one_fm.utils.paid_sick_leave_validation",
-        "on_submit": "one_fm.utils.bereavement_leave_validation",
-        "before_submit": "one_fm.utils.update_employee_hajj_status",
-        "validate": "one_fm.utils.validate_hajj_leave"
+        "on_submit": "one_fm.utils.leave_appillication_on_submit",
+        "validate": "one_fm.utils.validate_hajj_leave",
+        "on_cancel": "one_fm.utils.leave_appillication_on_cancel"
     },
     "UOM": {
         "autoname": "one_fm.utils.change_naming_series"
+    },
+    "Leave Type": {
+        "validate": "one_fm.utils.validate_leave_type_for_paid_sick_leave"
     }
 }
 
@@ -134,30 +136,28 @@ scheduler_events = {
 # Testing
 # -------
 
-fixtures = ["Custom Field","Property Setter","Workflow State","Workflow Action Master","Workflow","Custom Script","Print Format"]
-      
-# fixtures = [
-#       {
-#         "dt": "Custom Field"
-#         # "filters": [["name", "in", ["Project-project_image","Project-site_section_01","Project-project_sites"]]]
-#       },
-#       {
-#         "dt": "Property Setter"
-#         # "filters": [["doc_type", "in", ["Lead"]]]
-#       },
-#       {
-#         "dt": "Workflow State"
-#       },
-#       {
-#         "dt": "Workflow Action Master"
-#       },
-#       {
-#         "dt": "Workflow"
-#       },
-#       {
-#         "dt": "Custom Script"
-#       }
-# ]
+fixtures = [
+      {
+        "dt": "Custom Field"
+        # "filters": [["name", "in", ["Project-project_image","Project-site_section_01","Project-project_sites"]]]
+      },
+      {
+        "dt": "Property Setter"
+        # "filters": [["doc_type", "in", ["Lead"]]]
+      },
+      {
+        "dt": "Workflow State"
+      },
+      {
+        "dt": "Workflow Action Master"
+      },
+      {
+        "dt": "Workflow"
+      },
+      {
+        "dt": "Custom Script"
+      }
+]
 
 # before_tests = "one_fm.install.before_tests"
 
@@ -167,4 +167,3 @@ fixtures = ["Custom Field","Property Setter","Workflow State","Workflow Action M
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "one_fm.event.get_events"
 # }
-
