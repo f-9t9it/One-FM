@@ -91,7 +91,7 @@ doc_events = {
         "autoname": "one_fm.utils.change_naming_series"
     },
     "Leave Type": {
-        "validate": "one_fm.utils.validate_leave_type_for_paid_sick_leave"
+        "validate": "one_fm.utils.validate_leave_type_for_one_fm_paid_leave"
     }
 }
 
